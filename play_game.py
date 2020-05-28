@@ -4,11 +4,12 @@
 import json
 import re
 
-with open("JEOPARDY_QUESTIONS1.json") as f:
+with open("SMALL_JEOPARDY.json") as f:
     data = json.load(f)
 
-# Printing a list of categories available
+    
 def print_cats(data_list):
+    """Printing a list of categories available"""
     cats = []
     for dictionary in data_list:
         if dictionary['category'] != None:
@@ -16,9 +17,8 @@ def print_cats(data_list):
     return cats
 
 
-# Printing a hint for the user if prompted
 def get_hint(chosen_dict):
-
+    """Printing a hint for the user if prompted"""
     word_list = re.findall(r'\w+\'?\w+', chosen_dict['answer'])
     len_word_list = len(word_list)
 
@@ -30,9 +30,9 @@ def get_hint(chosen_dict):
 
 print("Welcome to My Quiz based on Jeopardy questions!")
 
-# Printing available categories, asking question, verifing, printing user score
-def find_ask_question(data_list):
 
+def find_ask_question(data_list):
+    """Printing available categories, asking question, verifing, printing user score"""
     user_score = None
     hints = 3
     chosen_dict = ""
